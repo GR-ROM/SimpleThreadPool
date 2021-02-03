@@ -27,7 +27,7 @@ public class Worker implements Runnable {
         while (true) {
             Runnable task = null;
             synchronized (tasks) {
-                if (tasks.size() == 0) this.onCompletion.countDown();
+                this.onCompletion.countDown();
             }
             try {
                 task=tasks.take();

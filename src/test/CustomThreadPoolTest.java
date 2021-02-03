@@ -12,6 +12,7 @@ import su.grinev.CustomThreadPool;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class CustomThreadPoolTest {
@@ -26,10 +27,12 @@ public class CustomThreadPoolTest {
         testTask = new ArrayList<>();
         for (int i = 0; i != max_task; i++) {
             int finalI = i;
+            Random rnd=new Random();
             testTask.add(() -> {
                 int a = 10000;
                 int b = 0;
                 for (int t = 0; t != a; t++) {
+                    t=rnd.nextInt(65535);
                     b=+t*t;
                 }
                 b= (int) Math.sqrt(b/a);

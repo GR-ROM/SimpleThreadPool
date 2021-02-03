@@ -15,10 +15,11 @@ public class CountingSemaphore {
     }
 
     public void countDown() {
-        if (this.counter.decrementAndGet() == 0)
+        if (this.counter.decrementAndGet()==0) {
             synchronized (this) {
                 this.notify();
             }
+        }
     }
 
     public void await() throws InterruptedException {
